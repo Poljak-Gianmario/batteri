@@ -20,6 +20,7 @@ public class EscherichiaColi extends main.Batterio{
         clone.goDown = !goDown;
         clone.goRight = !goRight;
         return clone;
+
     }
 
     @Override
