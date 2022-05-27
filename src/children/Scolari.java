@@ -20,34 +20,26 @@ public class Scolari extends main.Batterio{
 
     @Override
     protected void move() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < i; j++) {
                 if (Food.isFood(getX() - i, getY() - j)) {
-                    if (i != 0)
-                        x--;
-                    if (j != 0)
-                        y--;
+                    x-= i;
+                    y-= j;
                     return;
                 }
                 if (Food.isFood(getX() - i, getY() + j)) {
-                    if (i != 0)
-                        x--;
-                    if (j != 0)
-                        y++;
+                    x-= i;
+                    y+= j;
                     return;
                 }
                 if (Food.isFood(getX() + i, getY() - j)) {
-                    if (i != 0)
-                        x++;
-                    if (j != 0)
-                        y--;
+                    x+= i;
+                    y-= j;
                     return;
                 }
                 if (Food.isFood(getX() + i, getY() + j)) {
-                    if (i != 0)
-                        x++;
-                    if (j != 0)
-                        y++;
+                    x+= i;
+                    y+= j;
                     return;
                 }
             }
@@ -96,6 +88,8 @@ public class Scolari extends main.Batterio{
     @Override
     public main.Batterio clone() throws CloneNotSupportedException {
         Scolari clone = (Scolari)super.clone();
+        clone.x = ((int) (Math.random() * 10000)) % Food.getWidth();
+        clone.y = ((int) (Math.random() * 10000)) % Food.getHeight();
         return clone;
     }
 
