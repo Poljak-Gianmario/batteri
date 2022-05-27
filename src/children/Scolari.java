@@ -7,9 +7,13 @@ public class Scolari extends main.Batterio{
     private boolean moveVertical;
     private boolean goRight;
     private boolean moveHorizontal;
+    private int mosse;
 
 
     public Scolari() {
+        x = ((int) (Math.random() * 10000)) % Food.getWidth();
+        y = ((int) (Math.random() * 10000)) % Food.getHeight();
+        mosse = 0;
         goDown = getRandomBoolean();
         goRight = getRandomBoolean();
         moveVertical = getRandomBoolean();
@@ -20,13 +24,18 @@ public class Scolari extends main.Batterio{
 
     @Override
     protected void move() {
-        for (int i = 0; i < 8; i++) {
+        mosse++;
+        if (mosse == 500){
+            mosse = 0;
+            goDown = getRandomBoolean();
+            goRight = getRandomBoolean();
+            moveVertical = getRandomBoolean();
+            moveHorizontal = getRandomBoolean();
+            if (!moveVertical)
+                moveHorizontal= true;
+        }
+        for (int i = 0; i < 25; i++) {
             for (int j = 0; j < i; j++) {
-                if (Food.isFood(getX() - i, getY() - j)) {
-                    x-= i;
-                    y-= j;
-                    return;
-                }
                 if (Food.isFood(getX() - i, getY() + j)) {
                     x-= i;
                     y+= j;
@@ -34,6 +43,11 @@ public class Scolari extends main.Batterio{
                 }
                 if (Food.isFood(getX() + i, getY() - j)) {
                     x+= i;
+                    y-= j;
+                    return;
+                }
+                if (Food.isFood(getX() - i, getY() - j)) {
+                    x-= i;
                     y-= j;
                     return;
                 }
@@ -88,8 +102,6 @@ public class Scolari extends main.Batterio{
     @Override
     public main.Batterio clone() throws CloneNotSupportedException {
         Scolari clone = (Scolari)super.clone();
-        clone.x = ((int) (Math.random() * 10000)) % Food.getWidth();
-        clone.y = ((int) (Math.random() * 10000)) % Food.getHeight();
         return clone;
     }
 
