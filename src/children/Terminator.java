@@ -7,6 +7,7 @@ public class Terminator extends main.Batterio{
 
     public Terminator() {
         int a = (int) (Math.random() * 1000);
+        //Tentativo di settare punto di spawn piu vantaggioso
         if(a < 250)
         {
             x = 300;
@@ -45,8 +46,8 @@ public class Terminator extends main.Batterio{
 
     @Override
     protected void move() {
-
-        for (int i = 0; i < 15; i++) {
+    //Scanner progettato con scolari
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < i; j++) {
                 if (Food.isFood(getX() - i, getY() - j)) {
                     x-= i;
@@ -71,7 +72,7 @@ public class Terminator extends main.Batterio{
             }
 
         }
-
+    //Gestione movimento
         if (goDown) {
             y++;
             if (y > Food.getHeight()) {
@@ -99,7 +100,6 @@ public class Terminator extends main.Batterio{
                 x = 0;
             }
         }
-
 
     }
     @Override
