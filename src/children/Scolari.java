@@ -9,7 +9,6 @@ public class Scolari extends main.Batterio{
     private boolean moveHorizontal;
     private int mosse;
 
-
     public Scolari() {
         x = ((int) (Math.random() * 10000)) % Food.getWidth();
         y = ((int) (Math.random() * 10000)) % Food.getHeight();
@@ -57,7 +56,6 @@ public class Scolari extends main.Batterio{
                     return;
                 }
             }
-
         }
         if (moveVertical) {
             if (goDown) {
@@ -98,11 +96,9 @@ public class Scolari extends main.Batterio{
         return Math.random() < 0.5;
     }
 
-
     @Override
     public main.Batterio clone() throws CloneNotSupportedException {
         Scolari clone = (Scolari)super.clone();
         return clone;
     }
-
 }
